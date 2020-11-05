@@ -9,6 +9,40 @@
 
 <body>
 
+    <table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="row" rowspan="2" class="align-middle">ขบวน</th>
+                <td scope="col" colspan="2">ต้นทาง</td>
+                <th scope="col" colspan="2">ห้วยราช</th>
+                <th scope="col" colspan="2">ปลายทาง</th>
+                <th scope="row" rowspan="2" class="align-middle">หมายเหตุ</th>
+            </tr>
+            <tr>
+                <td scope="col">สถานี</td>
+                <th scope="col">เวลาออก</th>
+                <th scope="col">ถึง</th>
+                <th scope="col">ออก</th>
+                <th scope="col">สถานี</th>
+                <th scope="col">ถึงเวลา</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($train->result_array() as $result) { ?>
+                <tr>
+                    <th scope="row"><?php echo $result['id_train'] ?></th>
+                    <td><?php echo $result['station'] ?></td>
+                    <td><?php echo $result['timeout'] ?></td>
+                    <td><?php echo $result['to'] ?></td>
+                    <td><?php echo $result['out'] ?></td>
+                    <td><?php echo $result['tostation'] ?></td>
+                    <td><?php echo $result['totime'] ?></td>
+                    <td><?php echo $result['report'] ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
     <div class="container">
         <div class="card mt-5 mb-5 col-8 mx-auto">
             <div class="card-body">

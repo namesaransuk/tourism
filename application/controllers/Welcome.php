@@ -11,12 +11,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('index');
-	}
-
-	public function show()
-	{
-		$this->load->view('show');
+		$result['train'] = $this->train->showTrain();
+		$this->load->view('index',$result);
 	}
 
 	public function insert()
@@ -37,14 +33,14 @@ class Welcome extends CI_Controller {
 		);
 
 		$data4 = array(
-			'station' => $this->input->post("station2"),
+			'tostation' => $this->input->post("station2"),
 			'totime' => $this->input->post("timeout2")
 		);
 
 		if ($data1 && $data2 && $data3 && $data4) {
 			$this->train->adding($data1, $data2, $data3, $data4);
 			echo '<script> alert("สมัครสำเร็จ กรุณาเข้าสู่ระบบ !!") </script>';
-			redirect('welcome/show', 'refresh');
+			redirect('welcome/index', 'refresh');
 			// $this->load->view('login');
 		} else {
 			echo '<script> alert("เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง !!") </script>';
